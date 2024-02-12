@@ -34,3 +34,7 @@
 /Users/sam/Playground/dotnet8/ChatApp/ChatApp.Web/obj/Debug/net8.0/ChatApp.Web.pdb
 /Users/sam/Playground/dotnet8/ChatApp/ChatApp.Web/obj/Debug/net8.0/ChatApp.Web.genruntimeconfig.cache
 /Users/sam/Playground/dotnet8/ChatApp/ChatApp.Web/obj/Debug/net8.0/ref/ChatApp.Web.dll
+/Users/sam/Playground/dotnet8/ChatApp/ChatApp.Web/obj/Debug/net8.0/ChatApp.Web.sourcelink.json
+/Users/sam/Playground/dotnet8/ChatApp/ChatApp.Web/bin/Debug/net8.0/ChatApp.Web.staticwebassets.runtime.json
+/Users/sam/Playground/dotnet8/ChatApp/ChatApp.Web/bin/Debug/net8.0/Newtonsoft.Json.dll
+/Users/sam/Playground/dotnet8/ChatApp/ChatApp.Web/bin/Debug/net8.0/System.Net.WebSockets.WebSocketProtocol.dll

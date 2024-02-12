@@ -1,4 +1,5 @@
 using ChatApp.Web.Models;
+using ChatApp.Web.Hubs;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<DatabaseContext>(
 
 builder.Services.AddControllers();
 
+builder.Services.AddSignalR();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -24,6 +27,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
+app.MapHub<ChatHub>("/r/chatHub");
 
 app.MapGet("/test", () => "Hello World!");
 

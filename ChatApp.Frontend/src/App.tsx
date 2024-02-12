@@ -6,7 +6,13 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+import { toast } from "sonner";
+
+import { Toaster } from "@/components/ui/sonner"
+
+
 import { useEffect, useState } from "react";
+import useSignalR from "./useSignalR";
 
 type Message = {
   id: number;
@@ -15,6 +21,30 @@ type Message = {
 };
 
 export default function Component() {
+  const { connection } = useSignalR("/r/chatHub");
+
+  useEffect(() => {
+    if (!connection) {
+      return;
+    }
+    // listen for messages from the server
+    connection.on("ReceiveMessage", (message: Message) => {
+      // from the server
+      setMessages((messages) => [...(messages || []), message]);
+      toast("New Message", {
+        description: message.content,
+        action: {
+          label: "Cool",
+          onClick: () => console.log("cool"),
+        },
+      });
+    });
+
+    return () => {
+      connection.off("ReceiveMessage");
+    };
+  }, [connection]);
+
   const [content, setContent] = useState("");
   const [messages, setMessages] = useState<Message[]>();
 
@@ -44,6 +74,7 @@ export default function Component() {
         <div className="flex h-12 items-center px-4 border-b">
           <TwitterIcon className="w-5 h-5 mr-2" />
           <h2 className="text-lg font-medium leading-none">general</h2>
+          <p>{connection ? "✅" : "❌"}</p>
           <Button className="ml-auto rounded-full" size="sm" variant="ghost">
             <PlusIcon className="w-4 h-4" />
           </Button>
@@ -172,6 +203,7 @@ export default function Component() {
           </Button>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 }
