@@ -8,4 +8,4 @@ public class DatabaseContext : DbContext
       : base(options) { }
 
   public DbSet<Message> Messages => Set<Message>();
-}
+} 

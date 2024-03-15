@@ -17,7 +17,7 @@ import useSignalR from "./useSignalR";
 type Message = {
   id: number;
   content: string;
-  createdAt: string;
+  createdAt: string;  
 };
 
 export default function Component() {
